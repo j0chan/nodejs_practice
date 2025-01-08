@@ -51,3 +51,6 @@ function add(x:number, y:number):string { // 파라미터 타입 명시 必
     let msg:string = "Sample msg"
     return msg;
 }
+
+const obj = {width: 10, height: 15};
+const area = obj.width * obj.height;
