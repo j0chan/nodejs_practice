@@ -27,3 +27,11 @@ console.log(arrayOfNumbers2[2]) // 20
 // 해당 타입 요소만 허용되는 배열 = 튜플
 // let singleNumberTuple: [number, string, boolean]
 // singleNumberTuple = [5, "hello", true]
+
+
+// 함수의 명시적 타입 선언 (매개변수 / parameter)
+function greeter(name: string): string {
+    return "Hello, " + name;
+}
+
+console.log(greeter("Tom"))
