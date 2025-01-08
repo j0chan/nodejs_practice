@@ -38,6 +38,16 @@ let addLength = columnLength + 5;
 let meterLength = addLength/100;
 // ..개발 진행 과정..
 // ..개발 진행 과정..
+// ..개발 진행 과정..
+// ..개발 진행 과정..
 // ..개발 완료
 console.log(addLength)
 console.log(meterLength)
+
+
+// ㅡ메서드 타입 안정화ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+function add(x:number, y:number):string { // 파라미터 타입 명시 必
+    a = x + y;
+    let msg:string = "Sample msg"
+    return msg;
+}
