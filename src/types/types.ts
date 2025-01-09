@@ -73,3 +73,16 @@ object()
 object.bar = 100
 object = "hello"
 const n:number = object
+
+
+// Union 타입
+// SRP 원칙 위배 -> num타입과 str타입 파라미터를 분리해서 처리한다.
+function printId(id: number | string) { // OR
+    if(typeof id === "string"){
+        console.log(id.toUpperCase())
+    }
+    console.log(id)
+}
+
+printId(10)
+printId("Hello")
