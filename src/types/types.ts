@@ -165,3 +165,17 @@ function getBear1(): Bear1 {
 const bear1 = getBear1()
 console.log(bear1.name) // from Animal1 type
 console.log(bear1.honey)
+
+// 인터페이스 병합
+// type은 아래 코드처럼 재선언이 불가하다.(중복 코드 오류) -> 기존 코드를 수정해야함 -> OCP 위배
+// 인터페이스를 통해 기존 코드를 수정하지 않고, 기능 추가 및 확장(OCP) 가능
+interface Job{
+    title:string,
+}
+interface Job{
+    company:string
+}
+const myJob:Job = {
+    title:"SW Engineer",
+    company:"Tech"
+}
