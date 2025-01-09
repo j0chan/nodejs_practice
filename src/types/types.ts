@@ -50,3 +50,16 @@ console.log(car.color)
 function printOutput(pt: {x: number, y:number}) {
     console.log("The X value is : " + pt.x + "\nThe Y value is : " + pt.y)
 }
+
+// 객체의 선택적 속성 지정 방법
+// "?"를 붙이면 input이 없을 때 제외한다.
+function printName(user: {first:string, last?:string}){
+    if (user.last != undefined) {
+        console.log("Your First name is " + user.first.toUpperCase())
+        console.log("Your Last name is " + user.last.toUpperCase())
+    } else {
+        console.log("Your name is " + user.first.toLowerCase())
+    }
+}
+
+printName({first:"Bob",})
