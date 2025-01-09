@@ -129,3 +129,19 @@ let c1 = new CleaningRobot("ABC-1", "Prime", ["Sun", "Mon"])
 console.log(c1.cleanigSchedule);
 c1.performTask();
 console.log(c1.getName())
+
+
+// Interface: 추상적인 객체 형태 지정
+interface UserDTO {
+    id: number;
+    name: string;
+    email: string;
+    createAt: Date;
+}
+
+// API 응답 형태를 정의하는 경우
+interface ApiResponse {
+    success: boolean;
+    data?: UserDTO;
+    message?: string;
+}
