@@ -35,3 +35,15 @@ r1.performTask("설거지");
 r2.performTask("빨래");
 r3.updateStatus("Sleeping");
 
+// No-args Constructor
+class Pet{
+    category: string = "cat";
+    name: string = "Chu";
+
+    // 기본 생성자
+    // constructor(){};
+};
+
+let p1 = new Pet();
+console.log(p1.category);
+console.log(p1.name);
