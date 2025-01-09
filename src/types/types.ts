@@ -179,3 +179,28 @@ const myJob:Job = {
     title:"SW Engineer",
     company:"Tech"
 }
+
+// 타입 단언 Type Assertions
+const apiResponse: any = {
+    id:1,
+    title:"TypeScript Begins",
+    content:"This is contents of Article",
+};
+
+console.log(apiResponse.like); // Error (any타입이라 오류 공지X)
+
+interface Content {
+    id: number,
+    title: string,
+    content: string,
+};
+
+// Type Assertions using 'as' Keyword ["as"를 통해 any타입을 다른 타입으로 명시화]
+const content1 = apiResponse as Content;
+// 이제는 오류 발견
+// console.log(content1.like)
+
+// 또 다른 방식, <> 사용
+const content2 = <Content>apiResponse;
+console.log(content1.title);
+console.log(content2.id);
