@@ -75,3 +75,62 @@ console.log(user1)
 console.log(user2.email)
 user1.study();
 user2.study();
+
+// Class inheritance
+class CleaningRobot { // Members
+    // Property(속성) 또는 Field
+    name: string;
+    model: string;
+    cleanigSchedule: string[];
+    status: string = "Active";
+
+    // Constructor(생성자)
+    constructor(name: string, model: string, cleanigSchedule: string[]){
+        this.name = name;
+        this.model = model;
+        this.cleanigSchedule = cleanigSchedule;
+    }
+
+    // Method(행동)
+    performTask(task: string){
+        console.log(`${this.name} is performing ${task}.`);
+    };
+
+    updateStatus(newStatus:string){
+        this.status = newStatus;
+        console.log(`${this.name}'s status is now ${this.status}.`)
+    };
+
+    performCleaning() {
+        console.log(`${this.name} is cleaning according to the schdule ${this.cleanigSchedule.join(", ")}.`);
+    }
+}
+
+class CookingRobot { // Members
+    // Property(속성) 또는 Field
+    name: string;
+    model: string;
+    avilableMenus: string[];
+    status: string = "Active";
+
+    // Constructor(생성자)
+    constructor(name: string, model: string, avilableMenus: string[]){
+        this.name = name;
+        this.model = model;
+        this.avilableMenus = avilableMenus;
+    }
+
+    // Method(행동)
+    performTask(task: string){
+        console.log(`${this.name} is performing ${task}.`);
+    };
+
+    updateStatus(newStatus:string){
+        this.status = newStatus;
+        console.log(`${this.name}'s status is now ${this.status}.`)
+    };
+
+    performCooking() {
+        console.log(`${this.name} is cleaning according to the menus ${this.avilableMenus.join(", ")}.`);
+    }
+}
