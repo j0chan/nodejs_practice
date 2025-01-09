@@ -213,3 +213,32 @@ function printText(s:string, alignment: "left"|"right"|"center") {
 printText("Hello, world", "left")
 printText("Hello, world", "right")
 printText("Hello, world", "center")
+
+
+// Enum(열거형) 타입 //
+// 리터럴 타입 대신 사용한다.
+// 상태나 종류를 구분하는 데 많이 사용된다.
+enum Day {
+    Sun = 0,
+    Mon = 1,
+    Tue = 2,
+    Wed = 3,
+    Thu = 4,
+    Fri = 5,
+    Sat = 6,
+}
+function checkDayType(): void {
+    const currentDay = new Date().getDay();
+
+    const isWorkoutDay = currentDay === Day.Tue || currentDay === Day.Thu;
+    const isWeekend = currentDay === Day.Sun || currentDay === Day.Sat;
+
+    const isWorkingDay =
+        currentDay !== Day.Sun && currentDay !== Day.Sat &&
+        currentDay !== Day.Mon && currentDay !== Day.Wed;
+
+    console.log(`Today is day number ${currentDay}.`);
+    console.log(`Is today a workout day? ${isWorkoutDay}.`);
+    console.log(`Is today a weekend day? ${isWeekend}.`);
+    console.log(`Is today a working day? ${isWorkingDay}.`);
+}
