@@ -204,3 +204,12 @@ const content1 = apiResponse as Content;
 const content2 = <Content>apiResponse;
 console.log(content1.title);
 console.log(content2.id);
+
+
+// 리터럴 타입 (특정 값을 타입으로 선언) (재사용성 ↓, 잘 사용 X)
+function printText(s:string, alignment: "left"|"right"|"center") {
+    // ...
+}
+printText("Hello, world", "left")
+printText("Hello, world", "right")
+printText("Hello, world", "center")
