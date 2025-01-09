@@ -1,13 +1,21 @@
 class Robot { // Members
     // Property(속성) 또는 Field
-    name: string;
-    model: string;
-    status: string = "Active";
+    private name: string;
+    private model: string;
+    protected status: string = "Active";
 
     // Constructor(생성자)
     constructor(name: string, model: string){
         this.name = name;
         this.model = model;
+    }
+
+    // Getter (외부에서는 private로 설정된 name에 접근 불가 -> getter로 우회 접근)
+    public getName(): string {
+        return this.name;
+    }
+    public getModel(): string {
+        return this.model;
     }
 
     // Method(행동)
@@ -27,9 +35,9 @@ let r2 = new Robot("Optimus", "R2")
 let r3 = new Robot("ET", "R3")
 
 // Accesing fields and Calling Methods
-console.log(r1.name);
-console.log(r2.model);
-console.log(r3.status);
+console.log(r1.getName());
+console.log(r2.getModel());
+// console.log(r3.status);
 
 r1.performTask("설거지");
 r2.performTask("빨래");
@@ -90,7 +98,7 @@ class CleaningRobot extends Robot{ // Members
     // Method(행동)
     // override를 통한 메서드 재정의
     override performTask() { 
-        console.log(`${this.name} is cleaning according to the schdule ${this.cleanigSchedule.join(", ")}.`);
+        console.log(`${this.getName()} is cleaning according to the schdule ${this.cleanigSchedule.join(", ")}.`);
     }
 }
 
@@ -107,6 +115,17 @@ class CookingRobot extends Robot { // Members
     // Method(행동)
     // override를 통한 메서드 재정의
     override performTask() {
-        console.log(`${this.name} is cleaning according to the menus ${this.avilableMenus.join(", ")}.`);
+        console.log(`${this.getName()} is cleaning according to the menus ${this.avilableMenus.join(", ")}.`);
     }
 }
+
+
+// 접근 제어자; Visibility Modifier / Access Modifier
+// public, protected, private
+// public: 모든 클래스에서 접근 가능(기본값)
+// protected: 같은 클래스, 자식 클래스에서 접근 가능
+// private: 해당 클래스에서만 접근 가능
+let c1 = new CleaningRobot("ABC-1", "Prime", ["Sun", "Mon"])
+console.log(c1.cleanigSchedule);
+c1.performTask();
+console.log(c1.getName())
