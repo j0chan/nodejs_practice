@@ -77,60 +77,36 @@ user1.study();
 user2.study();
 
 // Class inheritance
-class CleaningRobot { // Members
+class CleaningRobot extends Robot{ // Members
     // Property(속성) 또는 Field
-    name: string;
-    model: string;
     cleanigSchedule: string[];
-    status: string = "Active";
 
     // Constructor(생성자)
     constructor(name: string, model: string, cleanigSchedule: string[]){
-        this.name = name;
-        this.model = model;
+        super(name, model) // 부모 클래스의 멤버를 가리킨다.
         this.cleanigSchedule = cleanigSchedule;
     }
 
     // Method(행동)
-    performTask(task: string){
-        console.log(`${this.name} is performing ${task}.`);
-    };
-
-    updateStatus(newStatus:string){
-        this.status = newStatus;
-        console.log(`${this.name}'s status is now ${this.status}.`)
-    };
-
-    performCleaning() {
+    // override를 통한 메서드 재정의
+    override performTask() { 
         console.log(`${this.name} is cleaning according to the schdule ${this.cleanigSchedule.join(", ")}.`);
     }
 }
 
-class CookingRobot { // Members
+class CookingRobot extends Robot { // Members
     // Property(속성) 또는 Field
-    name: string;
-    model: string;
     avilableMenus: string[];
-    status: string = "Active";
 
     // Constructor(생성자)
     constructor(name: string, model: string, avilableMenus: string[]){
-        this.name = name;
-        this.model = model;
+        super(name, model);
         this.avilableMenus = avilableMenus;
     }
 
     // Method(행동)
-    performTask(task: string){
-        console.log(`${this.name} is performing ${task}.`);
-    };
-
-    updateStatus(newStatus:string){
-        this.status = newStatus;
-        console.log(`${this.name}'s status is now ${this.status}.`)
-    };
-
-    performCooking() {
+    // override를 통한 메서드 재정의
+    override performTask() {
         console.log(`${this.name} is cleaning according to the menus ${this.avilableMenus.join(", ")}.`);
     }
 }
