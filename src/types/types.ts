@@ -86,3 +86,35 @@ function printId(id: number | string) { // OR
 
 printId(10)
 printId("Hello")
+
+
+// Type Alias & Interface
+function printCoord(point: {x:number, y:number}){
+    console.log("The coordinate's x value is " + point.x)
+    console.log("The coordinate's y value is " + point.y)
+}
+
+printCoord({x:100, y:100})
+
+// 하지만 객체의 속성이 같다면, 파라미터가 point1, point2, point3 ... 계속해서 중복 코드가 늘어난다.
+// 커스텀 타입 정의 가능
+type Point = {
+    x: number,
+    y: number,
+}
+// 아래처럼 간략하게 개선 가능
+function calculateDistance(point1: Point, point2: Point):number{
+    const locX = point2.x - point1.x
+    const locY = point2.y - point1.x
+    return Math.sqrt(locX ** 2 + locY ** 2)
+}
+
+// Union 타입 재정의
+type ID = number | string
+// 아래처럼 개선 가능
+function newPrintId(id: ID) { // OR
+    if(typeof id === "string"){
+        console.log(id.toUpperCase())
+    }
+    console.log(id)
+}
