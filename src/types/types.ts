@@ -98,10 +98,10 @@ printCoord({x:100, y:100})
 
 // 하지만 객체의 속성이 같다면, 파라미터가 point1, point2, point3 ... 계속해서 중복 코드가 늘어난다.
 // 커스텀 타입 정의 가능
-type Point = {
-    x: number,
-    y: number,
-}
+// type Point = {
+//     x: number,
+//     y: number,
+// }
 // 아래처럼 간략하게 개선 가능
 function calculateDistance(point1: Point, point2: Point):number{
     const locX = point2.x - point1.x
@@ -118,3 +118,50 @@ function newPrintId(id: ID) { // OR
     }
     console.log(id)
 }
+
+// 보통 타입 Alias 보다, Interface를 더 많이 사용한다. 더 많은 개방성, 확장성
+// -> OCP 원칙에 유리하다.
+interface Point {
+    x: number,
+    y: number,
+}
+
+// OCP 예시
+interface Animal {
+    name: string,
+}
+
+interface Bear extends Animal {
+    honey: boolean
+}
+
+function getBear(): Bear {
+    return {
+        name: "Grizzly",
+        honey: true,
+    }
+}
+
+const bear = getBear()
+console.log(bear.name) // from Animal
+console.log(bear.honey)
+
+
+// Type Alias 확장 예시
+type Animal1 = {
+    name: string,
+
+}
+type Bear1 = Animal1 & {
+    honey: boolean
+}
+
+function getBear1(): Bear1 {
+    return {
+        name: "Grey",
+        honey: false,
+    }
+}
+const bear1 = getBear1()
+console.log(bear1.name) // from Animal1 type
+console.log(bear1.honey)
