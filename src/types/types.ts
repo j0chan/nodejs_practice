@@ -63,3 +63,13 @@ function printName(user: {first:string, last?:string}){
 }
 
 printName({first:"Bob",})
+
+// any 타입은 오류를 회피하기 위해 사용하는 임시방편 (오류검사 회피)
+let object:any = {x:0}
+
+// 어떤 형태로든 사용이 가능해진다.
+object.foo()
+object()
+object.bar = 100
+object = "hello"
+const n:number = object
