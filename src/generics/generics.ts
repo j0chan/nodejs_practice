@@ -26,7 +26,7 @@ identityAnyType(arg)
 
 // 비효율적인 코드 해결 방법
 // Use Generics
-function identityWithGenerics<Type>(arg: Type):Type {
+function identityWithGenerics1<Type>(arg: Type):Type {
     return arg;
 }
 
@@ -51,3 +51,43 @@ console.log("Result of using generics: " + result);
 
 const result2 = identityWithGenerics3(20, "Hello");
 console.log(result2)
+
+
+
+// 간단 테스트 패턴(given-when-then 패턴) 연습
+function identityWithGenerics<Type>(arg: Type):Type {
+    return arg;
+}
+// 어떤 input이 들어오던지 허용하도록 any 사용
+function isNumber(value: any){
+    return typeof value === "number" && !isNaN(value);
+}
+function isString(value: any){
+    return typeof value === "string";
+}
+
+// [given] - 테스트 데이터 준비
+const testValue1: number = 20;
+const testValue2: string = "HI";
+const testValue3: number[] = [1, 20];
+
+// [when1] - 테스트 실행부
+const numberIdentity = identityWithGenerics(testValue1);
+// [then1] - 테스트 검증부
+console.log(`Input type is: ${typeof testValue1}`);
+console.log(`Output type is: ${typeof numberIdentity}`);
+console.log(`Is number: ${isNumber(numberIdentity)}`);  // true 예측
+
+// [when2] - 테스트 실행부
+const stringIdentity = identityWithGenerics(testValue2);
+// [then2] - 테스트 검증부
+console.log(`Input type is: ${typeof testValue2}`);
+console.log(`Output type is: ${typeof stringIdentity}`);
+console.log(`Is string: ${isString(stringIdentity)}`);  // true 예측
+
+// [when3] - 테스트 실행부
+const arrayIdentity = identityWithGenerics(testValue3);
+// [then3] - 테스트 검증부
+console.log(`Input type is: ${typeof testValue3}`);
+console.log(`Output type is: ${typeof arrayIdentity}`);
+console.log(`Is array: ${Array.isArray(arrayIdentity)}`); // true 예측
